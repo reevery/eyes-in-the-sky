@@ -5,16 +5,16 @@ ENV PIAWARE_HOST="" PIAWARE_PORT="" PIAWARE_USER="" PIAWARE_PASSWORD="" PIAWARE_
 RUN \
  apt-get update -qy \
  && apt-get install -qy \
- wget
+    wget
 
 RUN \
- wget $(wget -qO- http://flightaware.com/adsb/piaware/install | egrep wget | awk '{print $3}' | awk -F\< '{print $1}') && \
- dpkg -i piaware*.deb
+ wget $(wget -qO- http://flightaware.com/adsb/piaware/install | egrep wget | awk '{print $3}' | awk -F\< '{print $1}') \
+ && dpkg -i piaware*.deb
     
 RUN \
  apt-get update -qy \
  && apt-get install -qy \
- piaware
+    piaware
     
 RUN \
  piaware-config allow-auto-updates yes && \
@@ -24,11 +24,11 @@ EXPOSE 8080
 EXPOSE 30003
 
 RUN \
- apt-get clean && \
- rm -rf \
-    /tmp/* \
-	/var/lib/apt/lists/* \
-	/var/tmp/*
+ apt-get clean \
+ && rm -rf \
+      /tmp/* \
+	  /var/lib/apt/lists/* \
+	  /var/tmp/*
 
 WORKDIR /root
 

@@ -3,8 +3,8 @@ FROM resin/raspberrypi3-debian:jessie
 ENV DUMP1090_HOST="" DUMP1090_PORT="" FR24_KEY="" 
 
 RUN \
- gpg --keyserver pgp.mit.edu --recv-keys 40C430F5 && \
- gpg --armor --export 40C430F5 | apt-key add -
+ gpg --keyserver pgp.mit.edu --recv-keys 40C430F5 \
+ && gpg --armor --export 40C430F5 | apt-key add -
 
 # Add APT repository to the config file, removing older entries if exist
 
@@ -17,8 +17,8 @@ RUN \
     iputils-ping \
     nano \
     fr24feed \
- apt-get clean && \
- rm -rf \
+ && apt-get clean \
+ && rm -rf \
     /tmp/* \
 	/var/lib/apt/lists/* \
 	/var/tmp/*

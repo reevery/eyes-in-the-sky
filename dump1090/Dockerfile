@@ -47,11 +47,11 @@ EXPOSE 30005
 EXPOSE 30104
 
 RUN \
- apt-get clean && \
- rm -rf \
-    /tmp/* \
-	/var/lib/apt/lists/* \
-	/var/tmp/*
+ apt-get clean \
+ && rm -rf \
+      /tmp/* \
+	  /var/lib/apt/lists/* \
+	  /var/tmp/*
 
 WORKDIR /root
 
