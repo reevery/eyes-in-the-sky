@@ -40,3 +40,17 @@ services:
       - DUMP1090_PORT=30005
       - FR24_KEY=
     restart: always
+  planefinder:
+    image: "raspbian-planefinder"
+    container_name: planefinder
+    build: ./planefinder
+    restart: always
+    ports:
+     - "30053:30053"
+    environment:
+      - DUMP1090_HOST=dump1090
+      - DUMP1090_PORT=30005
+      - PF_SHARECODE=
+      - LAT=
+      - LONG=
+    restart: always
