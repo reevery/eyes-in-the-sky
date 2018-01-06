@@ -15,11 +15,10 @@ RUN apt-get update -qy \
 
 WORKDIR /tmp
 
-RUN git clone https://github.com/mutability/dump1090 \
+RUN git clone https://github.com/mutability/dump1090
     
 RUN git clone git://git.osmocom.org/rtl-sdr.git \
-    && cd rtl-sdr \
-    && mkdir build
+     && mkdir rtl-sdr/build
     
 WORKDIR /tmp/dump1090
 
