@@ -13,9 +13,12 @@ RUN apt-get update -qy \
     debhelper \
     pkg-config
 
+WORKDIR /tmp
+
 RUN git clone https://github.com/mutability/dump1090 \
     && cd dump1090 \
-    && make -j 4
+#    && make -j 4
+    dpkg-buildpackage -b
     
 #RUN git clone https://github.com/malcolmrobb/dump1090 \
 #    && cd dump1090 \
