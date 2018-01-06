@@ -16,19 +16,16 @@ RUN apt-get update -qy \
 WORKDIR /tmp
 
 RUN git clone https://github.com/mutability/dump1090 \
-    && cd dump1090 \
-#    && make -j 4
-    dpkg-buildpackage -b
     
-#RUN git clone https://github.com/malcolmrobb/dump1090 \
-#    && cd dump1090 \
-#    && make -j 4
-
-WORKDIR /tmp
-
 RUN git clone git://git.osmocom.org/rtl-sdr.git \
     && cd rtl-sdr \
     && mkdir build
+    
+WORKDIR /tmp/dump1090
+
+RUN dpkg-buildpackage \
+    && dpkg -i ../dump1090*.deb
+    
     
 WORKDIR /tmp/rtl-sdr/build
 
