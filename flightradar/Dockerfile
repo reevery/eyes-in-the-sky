@@ -1,5 +1,7 @@
 FROM resin/rpi-raspbian:jessie
 
+ENTRYPOINT []
+
 # Import GPG key for the APT repository
 RUN gpg --keyserver pgp.mit.edu --recv-keys 40C430F5 && \
     gpg --armor --export 40C430F5 | apt-key add -
