@@ -2,6 +2,8 @@ FROM resin/raspberrypi3-debian:jessie
 
 ENV DUMP1090_HOST="" DUMP1090_PORT="" FR24_KEY="" 
 
+WORKDIR /tmp
+
 RUN \
  gpg --keyserver pgp.mit.edu --recv-keys 40C430F5 \
  && gpg --armor --export 40C430F5 | apt-key add -

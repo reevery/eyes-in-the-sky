@@ -2,6 +2,8 @@ FROM resin/raspberrypi3-debian:jessie
 
 ENV PIAWARE_HOST="" PIAWARE_PORT="" PIAWARE_USER="" PIAWARE_PASSWORD="" PIAWARE_FEEDER_ID=""
 
+WORKDIR /tmp
+
 RUN \
  apt-get update -qy \
  && apt-get install -qy \
