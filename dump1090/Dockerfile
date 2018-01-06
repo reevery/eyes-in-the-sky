@@ -2,6 +2,8 @@ FROM resin/rpi-raspbian:jessie
 
 WORKDIR /root
 
+ENTRYPOINT []
+
 RUN apt-get update -qy \
  && apt-get install --no-install-recommends -qy \
     git-core \
@@ -32,7 +34,7 @@ RUN cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON \
     && make -j 4 \
     && make install \
     && ldconfig
-    
+
 # web overview
 EXPOSE 8080
 
