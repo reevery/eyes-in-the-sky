@@ -1,7 +1,7 @@
 version: '2'
 services:
   dump1090:
-    image: "raspbian-dump1090"
+    image: "shoginn/raspbian-dump1090"
     container_name: dump1090
     build: ./dump1090
     restart: always
@@ -18,7 +18,7 @@ services:
       - DUMP_LAT=49.555
       - DUMP_LON=-124.555
   piaware:
-    image: "raspbian-flightaware"
+    image: "shoginn/raspbian-flightaware"
     container_name: piaware
     build: ./flightaware
     restart: always
@@ -29,7 +29,7 @@ services:
       - PIAWARE_PASSWORD=password
       - PIAWARE_FEEDER_ID=
   flightradar:
-    image: "raspbian-flightradar24"
+    image: "shoginn/raspbian-flightradar24"
     container_name: flightradar24
     build: ./flightradar
     restart: always
@@ -41,7 +41,7 @@ services:
       - FR24_KEY=
     restart: always
   planefinder:
-    image: "raspbian-planefinder"
+    image: "shoginn/raspbian-planefinder"
     container_name: planefinder
     build: ./planefinder
     restart: always

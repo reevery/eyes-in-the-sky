@@ -2,6 +2,8 @@ FROM resin/raspberrypi3-debian:jessie
 
 ENV PIAWARE_HOST="" PIAWARE_PORT="" PIAWARE_USER="" PIAWARE_PASSWORD="" PIAWARE_FEEDER_ID=""
 
+RUN [ "cross-build-start" ]
+
 WORKDIR /tmp
 
 RUN \
@@ -21,6 +23,8 @@ RUN \
 RUN \
  piaware-config allow-auto-updates yes && \
  piaware-config allow-manual-updates yes
+
+RUN [ "cross-build-end" ] 
 
 EXPOSE 8080
 EXPOSE 30003

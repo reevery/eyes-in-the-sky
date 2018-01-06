@@ -2,6 +2,8 @@ FROM resin/raspberrypi3-debian:jessie
 
 ENV DUMP_HTTP_PORT="" DUMP_SBS_PORT="" DUMP_LAT="" DUMP_LON="" 
 
+RUN [ "cross-build-start" ]
+
 RUN \
  apt-get update -qy \
  && apt-get install --no-install-recommends -qy \
@@ -37,6 +39,8 @@ RUN \
  && make -j 4 \
  && make install \
  && ldconfig
+ 
+ RUN [ "cross-build-end" ] 
 
 # web overview
 EXPOSE 8080

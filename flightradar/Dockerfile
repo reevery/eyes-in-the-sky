@@ -2,6 +2,8 @@ FROM resin/raspberrypi3-debian:jessie
 
 ENV DUMP1090_HOST="" DUMP1090_PORT="" FR24_KEY="" 
 
+RUN [ "cross-build-start" ]
+
 WORKDIR /tmp
 
 RUN \
@@ -22,6 +24,8 @@ RUN \
     /tmp/* \
 	/var/lib/apt/lists/* \
 	/var/tmp/*
+
+RUN [ "cross-build-end" ] 
 
 EXPOSE 8754
 

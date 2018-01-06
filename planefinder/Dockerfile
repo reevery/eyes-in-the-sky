@@ -2,6 +2,8 @@ FROM resin/raspberrypi3-debian:jessie
 
 ENV DUMP1090_HOST="" DUMP1090_PORT="" PF_SHARECODE="" LAT="" LONG=""
 
+RUN [ "cross-build-start" ]
+
 RUN \
  apt-get update -qy \
  && apt-get install -qy \
@@ -19,6 +21,9 @@ RUN \
     /tmp/* \
 	/var/lib/apt/lists/* \
 	/var/tmp/*
+
+RUN [ "cross-build-end" ] 
+
 
 EXPOSE 30053
 
