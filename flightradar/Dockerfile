@@ -1,7 +1,5 @@
 FROM resin/raspberrypi3-debian:jessie
 
-ENTRYPOINT []
-
 # Import GPG key for the APT repository
 RUN gpg --keyserver pgp.mit.edu --recv-keys 40C430F5 && \
     gpg --armor --export 40C430F5 | apt-key add -
@@ -18,11 +16,9 @@ RUN apt-get update && apt-get install --assume-yes --no-install-recommends \
 RUN apt-get install iputils-ping && \
   apt-get install nano
 
-COPY ./start.sh start.sh
-RUN chmod +x start.sh
-
 EXPOSE 8754
 
 ENV DUMP1090_HOST="" DUMP1090_PORT="" FR24_KEY="" 
 
-CMD ["/start.sh"]
+ENTRYPOINT ["/usr/bin/fr24feed --fr24key=$FR24_KEY --receiver=beast-tcp --logmode=1 --host=$DUMP1090_HOST:$DUMP1090_PORT --logpath=/var/log --mlat=yes mlat-without-gps=yes --bs=no --raw=yes
+"]
