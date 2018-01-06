@@ -35,8 +35,8 @@ WORKDIR /tmp/rtl-sdr/build
 RUN cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON \
     && make -j 4 \
     && make install \
-    && ldconfig \
-
+    && ldconfig
+    
 # web overview
 EXPOSE 8080
 
