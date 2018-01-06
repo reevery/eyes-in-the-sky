@@ -2,8 +2,6 @@ FROM resin/raspberrypi3-debian:jessie
 
 WORKDIR /root
 
-ENTRYPOINT []
-
 RUN apt-get update -qy \
  && apt-get install --no-install-recommends -qy \
     git-core \
@@ -43,12 +41,8 @@ EXPOSE 30003
 EXPOSE 30005
 EXPOSE 30104
 
-WORKDIR /root/dump1090
-
-COPY ./startdumping.sh startdumping.sh
-RUN chmod +x startdumping.sh
-
 # Update your lat/lon values.
 ENV DUMP_HTTP_PORT="" DUMP_SBS_PORT="" DUMP_LAT="" DUMP_LON="" 
 
-CMD ["/root/dump1090/startdumping.sh"]
+ENTRYPOINT [/usr/bin/dump1090-mutability --net-http-port $DUMP_HTTP_PORT --net --net-sbs-port $DUMP_SBS_PORT --interactive --lat $DUMP_LAT --lon $DUMP_LON
+]
