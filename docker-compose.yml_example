@@ -39,3 +39,4 @@ services:
       - DUMP1090_HOST=dump1090
       - DUMP1090_PORT=30005
       - FR24_KEY=
+    restart: always
