@@ -1,0 +1,17 @@
+FROM resin/raspberrypi3-debian:jessie
+
+RUN apt-get update && apt-get install -qy wget
+
+WORKDIR /tmp
+
+RUN wget $(wget -qO- https://planefinder.net/sharing/client | egrep armhf.deb | awk -F\" '{print $2}') \
+    && dpkg -i pfclient*armhf.deb
+
+EXPOSE 30053
+
+ENV DUMP1090_HOST="" DUMP1090_PORT="" PF_SHARECODE="" LAT="" LONG=""
+
+COPY ./start.sh start.sh
+CHMOD +x start.sh
+
+ENTRYPOINT ["/start.sh"]
