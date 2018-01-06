@@ -1,7 +1,5 @@
 FROM resin/raspberrypi3-debian:jessie
 
-ENTRYPOINT []
-
 RUN apt-get update && apt-get install -qy wget
 
 RUN wget $(wget -qO- http://flightaware.com/adsb/piaware/install | egrep wget | awk '{print $3}' | awk -F\< '{print $1}') && \
@@ -21,4 +19,4 @@ RUN chmod +x start.sh
 
 ENV PIAWARE_HOST="" PIAWARE_PORT="" PIAWARE_USER="" PIAWARE_PASSWORD="" PIAWARE_FEEDER_ID=""
 
-CMD ["/start.sh"]
+ENTRYPOINT ["/start.sh"]
