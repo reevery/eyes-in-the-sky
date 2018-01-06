@@ -16,8 +16,6 @@ RUN \
 RUN \
  apt-get update -qy \
  && apt-get install --no-install-recommends -qy \
-    iputils-ping \
-    nano \
     fr24feed \
  && apt-get clean \
  && rm -rf \

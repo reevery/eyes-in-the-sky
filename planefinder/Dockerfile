@@ -25,6 +25,6 @@ EXPOSE 30053
 WORKDIR /root
 
 COPY ./start.sh start.sh
-CHMOD +x start.sh
+RUN chmod +x start.sh
 
 ENTRYPOINT ["/root/start.sh"]
