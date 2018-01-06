@@ -11,4 +11,7 @@ EXPOSE 30053
 
 ENV DUMP1090_HOST="" DUMP1090_PORT="" PF_SHARECODE="" LAT="" LONG=""
 
-ENTRYPOINT ["/usr/bin/pfclient --address=$DUMP1090_HOST --port=$DUMP1090_PORT --sharecode=$PF_SHARECODE --lat=$LAT --long=$LONG --data_format=1"]
+COPY ./start.sh start.sh
+CHMOD +x start.sh
+
+ENTRYPOINT ["/start.sh"]
