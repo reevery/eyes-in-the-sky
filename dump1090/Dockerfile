@@ -44,5 +44,7 @@ EXPOSE 30104
 # Update your lat/lon values.
 ENV DUMP_HTTP_PORT="" DUMP_SBS_PORT="" DUMP_LAT="" DUMP_LON="" 
 
-ENTRYPOINT [/usr/bin/dump1090-mutability --net-http-port $DUMP_HTTP_PORT --net --net-sbs-port $DUMP_SBS_PORT --interactive --lat $DUMP_LAT --lon $DUMP_LON
-]
+COPY ./start.sh start.sh
+RUN chmod +x start.sh
+
+ENTRYPOINT ["/start.sh"]
