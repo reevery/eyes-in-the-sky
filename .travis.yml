@@ -9,8 +9,8 @@ script:
 - docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
 - docker build -t shoginn/raspbian-dump1090 ./dump1090
 - docker push shoginn/raspbian-dump1090
-- docker build -t shoginn/shoginn/raspbian-flightaware ./flightaware
-- docker push shoginn/shoginn/raspbian-flightaware
+- docker build -t shoginn/raspbian-flightaware ./flightaware
+- docker push shoginn/raspbian-flightaware
 - docker build -t shoginn/raspbian-flightradar24 ./flightradar
 - docker push shoginn/raspbian-flightradar24
 - docker build -t shoginn/raspbian-planefinder ./planefinder
